@@ -2,9 +2,9 @@
 #include <stdarg.h>
 #include <ctype.h>
 
-static char *hex_digits = "0123456789ABCDEF";
+//static char *hex_digits = "0123456789ABCDEF";
 
-#if 1
+#if 0
 // Compiler is totally bonkers. Switch statement doesn't work!
 void printHexDigit(char val)
 {
@@ -104,6 +104,7 @@ void printHexDigit(char val)
 void printHex(uint16_t val, uint16_t width, char leading)
 {
   uint16_t digits, tval;
+  char c;
 
 
   for (tval = val, digits = 0; tval; tval >>= 4, digits++)
@@ -119,9 +120,12 @@ void printHex(uint16_t val, uint16_t width, char leading)
 #if 0
     // I don't know what's going on with the compiler but this doesn't work
     printChar(hex_digits[(val >> 4 * digits) & 0xf]);
-#else
+#elif 0
     // but this does
     printHexDigit((val >> 4 * digits) & 0xf);
+#else
+    c = (val >> 4 * digits) & 0xf;
+    printChar('0' + c + (c > 9 ? 7 : 0));
 #endif
   }
 
@@ -132,6 +136,7 @@ void printHex32(uint32_t val, uint16_t width, char leading)
 {
   uint16_t digits;
   uint32_t tval;
+  char c;
 
 
   for (tval = val, digits = 0; tval; tval >>= 4, digits++)
@@ -147,9 +152,12 @@ void printHex32(uint32_t val, uint16_t width, char leading)
 #if 0
     // I don't know what's going on with the compiler but this doesn't work
     printChar(hex_digits[(val >> 4 * digits) & 0xf]);
-#else
+#elif 0
     // but this does
     printHexDigit((val >> 4 * digits) & 0xf);
+#else
+    c = (val >> 4 * digits) & 0xf;
+    printChar('0' + c + (c > 9 ? 7 : 0));
 #endif
   }
 

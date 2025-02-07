@@ -22,6 +22,9 @@ int _small_code()
   printHex32((uint32_t) hello, 8, '0');
   printChar('\r');
   printChar('\n');
+  printDec(sizeof(char *), 0, 0);
+  printChar('\r');
+  printChar('\n');
   consolef(hello);
 
   return 0;
