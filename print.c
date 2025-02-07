@@ -4,9 +4,66 @@
 
 static char *hex_digits = "0123456789ABCDEF";
 
+#if 1
+// Compiler is totally bonkers. Switch statement doesn't work!
 void printHexDigit(char val)
 {
-  // Compiler is totally bonkers. I had this as a switch and it didn't work!
+  switch (val) {
+  case 0:
+    printChar('0');
+    break;
+  case 1:
+    printChar('1');
+    break;
+  case 2:
+    printChar('2');
+    break;
+  case 3:
+    printChar('3');
+    break;
+  case 4:
+    printChar('4');
+    break;
+  case 5:
+    printChar('5');
+    break;
+  case 6:
+    printChar('6');
+    break;
+  case 7:
+    printChar('7');
+    break;
+  case 8:
+    printChar('8');
+    break;
+  case 9:
+    printChar('9');
+    break;
+  case 10:
+    printChar('A');
+    break;
+  case 11:
+    printChar('B');
+    break;
+  case 12:
+    printChar('C');
+    break;
+  case 13:
+    printChar('D');
+    break;
+  case 14:
+    printChar('E');
+    break;
+  case 15:
+    printChar('F');
+    break;
+  }
+
+  return;
+}
+#else
+void printHexDigit(char val)
+{
   if (val == 0)
     printChar('0');
   else if (val == 1)
@@ -42,6 +99,7 @@ void printHexDigit(char val)
 
   return;
 }
+#endif
 
 void printHex(uint16_t val, uint16_t width, char leading)
 {
